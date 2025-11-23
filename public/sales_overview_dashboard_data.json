@@ -1,0 +1,69 @@
+{
+  "top10_location": {
+    "Montana": 5784,
+    "Illinois": 5617,
+    "California": 5605,
+    "Idaho": 5587,
+    "Nevada": 5514,
+    "Alabama": 5261,
+    "New York": 5257,
+    "North Dakota": 5220,
+    "West Virginia": 5174,
+    "Nebraska": 5172
+  },
+  "top10_product": {
+    "Blouse": 10410,
+    "Shirt": 10332,
+    "Dress": 10320,
+    "Pants": 10090,
+    "Jewelry": 10010,
+    "Sunglasses": 9649,
+    "Belt": 9635,
+    "Scarf": 9561,
+    "Sweater": 9462,
+    "Shorts": 9433
+  },
+  "category_sales": {
+    "Clothing": 104264,
+    "Accessories": 74200,
+    "Footwear": 36093,
+    "Outerwear": 18524
+  },
+  "age_group_sales": {
+    "0-18": 0,
+    "19-25": 29258,
+    "26-35": 45400,
+    "36-45": 43463,
+    "46-55": 45370,
+    "56-65": 44096,
+    "66+": 25494
+  },
+  "payment_sales": {
+    "Credit Card": 40310,
+    "PayPal": 40109,
+    "Cash": 40002,
+    "Debit Card": 38742,
+    "Venmo": 37374,
+    "Bank Transfer": 36544
+  },
+  "discount_sales": {
+    "No": 133670,
+    "Yes": 99411
+  },
+  "promo_sales": {
+    "No": 133670,
+    "Yes": 99411
+  },
+  "sub_sales": {
+    "No": 170436,
+    "Yes": 62645
+  },
+  "shipping_sales": {
+    "Free Shipping": 40777,
+    "Express": 39067,
+    "Store Pickup": 38931,
+    "Standard": 38233,
+    "2-Day Shipping": 38080,
+    "Next Day Air": 37993
+  }
+}
