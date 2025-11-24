@@ -34,9 +34,11 @@ export default function AgeGroupSalesPieChart({ ageData }) {
             nameKey="name"
             cx="50%"
             cy="50%"
-            innerRadius={60}
+            innerRadius={70}
             outerRadius={100}
             fill="#6366f1"
+            paddingAngle={0}
+            cornerRadius={10}
             label={({ percent, name }) => `${name} (${(percent * 100).toFixed(0)}%)`}
             isAnimationActive={false}
           >

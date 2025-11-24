@@ -11,7 +11,11 @@ export default function ShippingRadarChart({ data }) {
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
           <PolarGrid />
           <PolarAngleAxis dataKey="axis" />
-          <PolarRadiusAxis />
+          <PolarRadiusAxis
+            tick={{ fill: "#6366f1", fontWeight: 600, fontSize: 15 }}
+            axisLine={false}
+          />
+
           <Tooltip />
           <Legend />
           <Radar name="Sales" dataKey="value" stroke="#f472b6" fill="#f472b6" fillOpacity={0.5} />
