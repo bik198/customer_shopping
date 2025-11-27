@@ -76,13 +76,13 @@ export default function SalesOverviewDashboard() {
   const [rawData, setRawData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
-    age: [20, 70],
-    purchaseAmount: [0, 1000]
+    age: [0, 100],
+    purchaseAmount: [0, 100]
   });
   const [customerFilters, setCustomerFilters] = useState({
     region: "All",
     gender: "All",
-    age: [20, 70]
+    age: [0, 100]
   });
   const [dashboardData, setDashboardData] = useState(null);
   const [top5, setTop5] = useState(null);

@@ -1,40 +1,70 @@
 'use client';
+import { useRef } from 'react';
+import Slider from '@mui/material/Slider';
+
 export default function SalesFilterPanel({ filters, onFilterChange }) {
+  const initialFiltersRef = useRef(filters);
+
+  const handleReset = () => {
+    onFilterChange(initialFiltersRef.current);
+  };
+
+  const handleAgeChange = (_, newValue) => {
+    const [min, max] = newValue;
+    onFilterChange({ ...filters, age: [min, max] });
+  };
+
+  const handleAmountChange = (_, newValue) => {
+    const [min, max] = newValue;
+    onFilterChange({ ...filters, purchaseAmount: [min, max] });
+  };
+
   return (
-    <div className="bg-white shadow rounded p-6 w-full">
+    <div className="bg-white shadow rounded p-6 w-full h-[440px]">
       <h3 className="font-bold text-lg mb-6">Sales Filters</h3>
+
+      {/* Age slider */}
       <div className="mb-6">
-        <label className="block text-sm font-medium mb-1">Age (min):</label>
-        <input
-          type="number"
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-          value={filters.age[0]}
-          onChange={e => onFilterChange({ ...filters, age: [Number(e.target.value), filters.age[1]] })}
-        />
-        <label className="block text-sm font-medium mb-1 mt-4">Age (max):</label>
-        <input
-          type="number"
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-          value={filters.age[1]}
-          onChange={e => onFilterChange({ ...filters, age: [filters.age[0], Number(e.target.value)] })}
+        <div className="flex justify-between text-sm font-medium mb-1">
+          <span>Age range</span>
+          <span className="text-gray-600">
+            {filters.age[0]} – {filters.age[1]}
+          </span>
+        </div>
+        <Slider
+          value={filters.age}
+          onChange={handleAgeChange}
+          valueLabelDisplay="auto"
+          min={18}
+          max={80}
         />
       </div>
+
+      {/* Purchase amount slider */}
       <div className="mb-6">
-        <label className="block text-sm font-medium mb-1">Purchase Amount (min):</label>
-        <input
-          type="number"
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-          value={filters.purchaseAmount[0]}
-          onChange={e => onFilterChange({ ...filters, purchaseAmount: [Number(e.target.value), filters.purchaseAmount[1]] })}
-        />
-        <label className="block text-sm font-medium mb-1 mt-4">Purchase Amount (max):</label>
-        <input
-          type="number"
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
-          value={filters.purchaseAmount[1]}
-          onChange={e => onFilterChange({ ...filters, purchaseAmount: [filters.purchaseAmount[0], Number(e.target.value)] })}
+        <div className="flex justify-between text-sm font-medium mb-1">
+          <span>Purchase Amount ($)</span>
+          <span className="text-gray-600">
+            {filters.purchaseAmount[0]} – {filters.purchaseAmount[1]}
+          </span>
+        </div>
+        <Slider
+          value={filters.purchaseAmount}
+          onChange={handleAmountChange}
+          valueLabelDisplay="auto"
+          min={0}
+          max={100}
+          step={1}
         />
       </div>
+
+      <button
+        type="button"
+        onClick={handleReset}
+        className="mt-2 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded cursor-pointer"
+      >
+        Reset Filters
+      </button>
     </div>
   );
 }
