@@ -66,7 +66,7 @@ export default function GenderPairplot() {
           display: "grid",
           gridTemplateColumns: `repeat(${COLS.length}, 1fr)`,
           gridTemplateRows: `repeat(${COLS.length}, 1fr)`,
-          gap: 10,
+          gap: 1,
           width: "100%",
           maxWidth: 820,
           minWidth: 540,
@@ -78,31 +78,30 @@ export default function GenderPairplot() {
                 width: "100%",
                 height: 175,
                 minHeight: 130,
-                minWidth: 120,
+                minWidth: 140,
                 background: j === i ? "#f3f4f6" : "#fff",
-                borderRadius: 7,
+                borderRadius: 0,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 position: "relative"
               }}>
               {i === j ? (
-                <LineChart width={155} height={140}>
+                <LineChart width={185} height={140} style={{top: '10px', right: '5px'}}>
                   <XAxis
                     dataKey="value"
                     type="number"
                     domain={[colStats[colX].min, colStats[colX].max]}
                     tickCount={4}
-                    tick={{fontSize:12}}
-                    tickFormatter={i === COLS.length-1 ? formatTick : () => ""}
-                    label={i === COLS.length-1 ? { value: xLabel, position: "insideBottom", fontSize: 13, offset: -1 } : undefined}
+                    tick={{fontSize:10}}
+                    tickFormatter={i === COLS.length-1 ? formatTick : formatTick}
+                    label={{value: xLabel, position: "insideBottom", fontSize: 13, offset: -3}}
                   />
                   <YAxis
                     dataKey="density"
                     type="number"
                     tick={{fontSize:12}}
-                    tickFormatter={j === 0 ? formatTick : () => ""}
-                    label={j === 0 ? { value: xLabel, angle: -90, position: "insideLeft", offset: 3, fontSize: 13 } : undefined}
+                    label={{ value: 'Density', angle: -90, position: "insideLeft", offset: 7, fontSize: 13 }}
                   />
                   {["Male", "Female"].map(g =>
                     <Line
@@ -125,7 +124,7 @@ export default function GenderPairplot() {
                   )}
                 </LineChart>
               ) : (
-                <ScatterChart width={155} height={140}>
+                <ScatterChart width={185} height={160} style={{top: '10px', right: '5px'}}>
                   <XAxis
                     dataKey={colY}
                     type="number"
@@ -133,7 +132,7 @@ export default function GenderPairplot() {
                     tickCount={4}
                     tick={{fontSize: 12}}
                     tickFormatter={i === COLS.length-1 ? formatTick : () => ""}
-                    label={i === COLS.length-1 ? { value: yLabel, position:"insideBottom", fontSize: 13, offset:-2 } : undefined}
+                    label={{ value: yLabel, position:"insideBottom", fontSize: 13, offset:3 }}
                   />
                   <YAxis
                     dataKey={colX}
@@ -141,8 +140,8 @@ export default function GenderPairplot() {
                     domain={[colStats[colX].min, colStats[colX].max]}
                     tickCount={3}
                     tick={{fontSize: 12}}
-                    tickFormatter={j === 0 ? formatTick : () => ""}
-                    label={j === 0 ? { value: xLabel, angle: -90, position: "insideLeft", offset: 3, fontSize: 13 } : undefined}
+                    tickFormatter={formatTick}
+                    label={{ value: xLabel, angle: -90, position: "insideBottomLeft", offset: 12, fontSize: 13 }}
                   />
                   {["Male", "Female"].map(g =>
                     <Scatter

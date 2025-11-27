@@ -12,11 +12,8 @@ import PrevPurchaseFreqAreaChart from './PrevPurchaseFreqAreaChart';
 import Spinner from '../Spinner';
 import dynamic from 'next/dynamic';
 
-// NEW: Customer details row imports (from salesOverview folder)
 import CustomerGenderPie from './CustomerGenderPie';
-// import CustomerLocationMap from './CustomerLocationMap';
 import CustomerFilterPanel from './CustomerFilterPanel';
-// Dynamic import disables SSR for this component
 const CustomerLocationMap = dynamic(
   () => import('./CustomerLocationMap'),
   { ssr: false }
@@ -135,12 +132,11 @@ export default function SalesOverviewDashboard() {
       <div className="flex-1 space-y-8">
         {/* Combined Filters + Age Chart Box */}
         <div className="grid w-full gap-8 items-start" style={{ gridTemplateColumns: "1fr 320px" }}>
-            <SalesByAgeComboChart rawData={rawData} filters={filters} />
+          <SalesByAgeComboChart rawData={rawData} filters={filters} />
           <div style={{ width: "320px", minWidth: "320px", maxWidth: "320px" }}>
             <SalesFilterPanel filters={filters} onFilterChange={setFilters} />
           </div>
         </div>
-
 
         {/* Customer Details Row */}
         <div className="grid gap-8 mb-8 w-full" style={{ gridTemplateColumns: "1.5fr 3fr 320px" }}>
@@ -151,7 +147,7 @@ export default function SalesOverviewDashboard() {
             <CustomerLocationMap rawData={rawData} filters={customerFilters} stateCoordinates={stateCoordinates} />
           </div>
           <div className="bg-white rounded shadow p-6 h-full" style={{ width: "320px", minWidth: 320, maxWidth: 320 }}>
-            <CustomerFilterPanel filters={customerFilters} onFilterChange={setCustomerFilters} states={stateList}/>
+            <CustomerFilterPanel filters={customerFilters} onFilterChange={setCustomerFilters} states={stateList} />
           </div>
         </div>
 

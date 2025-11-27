@@ -65,7 +65,7 @@ export default function PCAAnalysis() {
       <div className="bg-white rounded shadow p-6 mt-8">
         <h2 className="text-xl font-semibold mb-4">Why Does PCA Look Clustered?</h2>
         <div className="space-y-4 text-gray-700">
-          <p><strong className="text-purple-600">Low Variance in First 2 PCs:</strong> PC1 and PC2 only capture 18.4% of total variance. This means most variation is in higher dimensions.</p>
+          <p><strong className="text-purple-600">Low Variance in First 2 PCs:</strong> PC1 and PC2 only capture 18.4% of total variance. This means most variation is in higher dimensions. Furthermore, the first 30 PC's explain only about 78% of total variance.</p>
           <p><strong className="text-purple-600">Similar Customer Behavior:</strong> Most customers have similar shopping patterns (age ranges, purchase amounts, preferences), creating natural overlap.</p>
           <p><strong className="text-purple-600">Many Categorical Features:</strong> 13 categorical variables create high-dimensional sparse data that's hard to separate in 2D.</p>
           <p><strong className="text-purple-600">Recommendation:</strong> Try viewing different PC combinations (especially PC3-PC5) and use category filters to see patterns within specific product groups.</p>

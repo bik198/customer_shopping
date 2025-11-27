@@ -64,11 +64,11 @@ export default function DataValidationKDE() {
     <div>
       <h2 className="font-bold text-2xl mb-4">EDA (Smooth Kernel Density)</h2>
       {analysis}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div>
           <div className="font-semibold text-lg mb-1">Age Distribution</div>
           <ResponsiveContainer {...chartStyle}>
-            <LineChart data={plots.Age}>
+            <LineChart data={plots.Age} className="border">
               <XAxis dataKey="x" tickFormatter={intTick} label={{ value: "Age", position: "insideBottom", dy: 8 }} />
               <YAxis label={{ value: "Density", angle: -90, position: "insideLeft" }} domain={[0, 'auto']} />
               <Line type="monotone" dataKey="y" stroke="#6366f1" dot={false} />

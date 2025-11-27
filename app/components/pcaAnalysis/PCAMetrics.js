@@ -5,13 +5,17 @@ export default function PCAMetrics({ varianceData }) {
 
   const pc1Var = (parseFloat(varianceData[0]?.Variance || 0) * 100).toFixed(2);
   const pc2Var = (parseFloat(varianceData[1]?.Variance || 0) * 100).toFixed(2);
-  const first5Cumulative = (parseFloat(varianceData[4]?.Cumulative || 0) * 100).toFixed(2);
+  const first10Cumulative = (parseFloat(varianceData[29]?.Cumulative || 0) * 100).toFixed(2);
+
+  // If you know "components for 90%" from your backend, use that value here
+  // Otherwise, you could loop varianceData to compute where Cumulative >= 0.9
+  const componentsFor90 = varianceData.findIndex(pc => parseFloat(pc.Cumulative) >= 0.9) + 1 || '--';
 
   const metrics = [
-    { label: 'PC1 Variance', value: `${pc1Var}%`, description: 'Customer spending + demographics', color: 'bg-purple-500' },
-    { label: 'PC2 Variance', value: `${pc2Var}%`, description: 'Purchase frequency + seasonal', color: 'bg-indigo-500' },
-    { label: 'First 5 PCs', value: `${first5Cumulative}%`, description: 'Total variance explained', color: 'bg-blue-500' },
-    { label: 'Components for 90%', value: '66', description: 'Due to categorical features', color: 'bg-teal-500' }
+    { label: 'PC1 Variance', value: `${pc1Var}%`, description: 'Variance explained by PC1', color: 'bg-purple-500' },
+    { label: 'PC2 Variance', value: `${pc2Var}%`, description: 'Variance explained by PC2', color: 'bg-indigo-500' },
+    { label: 'First 30 PCs', value: `${first10Cumulative}%`, description: 'Total variance explained', color: 'bg-blue-500' },
+    { label: 'Components for 90%', value: componentsFor90, description: 'PCs needed for 90% variance', color: 'bg-teal-500' }
   ];
 
   return (
